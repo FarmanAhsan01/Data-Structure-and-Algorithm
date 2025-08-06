@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Split_Array_Largest_Sum {
-    public static int splitLargestSum(ArrayList<Integer>nums, int split){
+public class painters_partition {
+    public static int partition(ArrayList<Integer>nums,int dist){
         int n=nums.size();
         int students=1;
         long pagesStudent=0;
         for (int i=0;i<n;i++){
-            if(pagesStudent+nums.get(i)<=split){
+            if(pagesStudent+nums.get(i)<=dist){
                 pagesStudent+=nums.get(i);
             }
             else {
@@ -20,23 +20,24 @@ public class Split_Array_Largest_Sum {
         }
         return students;
     }
-//    public static int maxSplit(ArrayList<Integer>nums, int k,int n){
-//        if(k>n){
+    //Brute Approach......................................
+//    public static int maxPart(ArrayList<Integer>nums,int part,int n){
+//        if(part>n){
 //            return -1;
 //        }
 //        int low= Collections.max(nums);
 //        int high=nums.stream().mapToInt(Integer::intValue).sum();
 //        for (int i=low;i<high;i++){
-//            if(splitLargestSum(nums,i)==k){
+//            if(partition(nums,i)==part){
 //                return i;
 //            }
 //        }
 //        return low;
 //    }
 
-    //Optimal Approach.............................................
-    public static int maxSplit(ArrayList<Integer>nums,int k,int n){
-        if(k>n){
+    //Optimal Approach...........................................
+    public  static  int maxPart(ArrayList<Integer>nums,int part,int n){
+        if(part>n){
             return -1;
         }
         int low= Collections.max(nums);
@@ -44,8 +45,8 @@ public class Split_Array_Largest_Sum {
 
         while (low<=high){
             int mid=(low+high)/2;
-            int noStudent=splitLargestSum(nums,mid);
-            if(noStudent>k){
+            int noStudent=partition(nums,mid);
+            if(noStudent>part){
                 low=mid+1;
             }
             else {
@@ -58,6 +59,6 @@ public class Split_Array_Largest_Sum {
         ArrayList<Integer>nums=new ArrayList<>(Arrays.asList(10,20,30,40));
         int n=nums.size();
         int k=2;
-        System.out.println(maxSplit(nums,k,n));
+        System.out.println(maxPart(nums,k,n));
     }
 }
