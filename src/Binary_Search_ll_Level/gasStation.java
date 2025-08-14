@@ -107,7 +107,7 @@ public class gasStation {
         }
         return high;
     }
-        
+         
 
     public static void main(String[] args){
         int nums[]={1,13,17,23};
