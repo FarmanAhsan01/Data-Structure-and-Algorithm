@@ -43,15 +43,15 @@ public class Search_in_a_2D_Matrix {
 //    }
 
     //Optimal Approach..............................
-    public static boolean search(ArrayList<ArrayList<Integer>>matrix ,int n,int m,int target){
+    public static boolean search(int [][] matrix ,int n,int m,int target){
         int low=0,high=(n*m-1);
         while(low<=high){
             int mid=(low+high)/2;
             int row=mid/m,col=mid%m;
-            if(matrix.get(row).get(col)==target){
+            if(matrix[row][col]==target){
                 return true;
             }
-            else if (matrix.get(row).get(col)<target){
+            else if (matrix[row][col]<target){
                 low=mid+1;
             }
             else {
@@ -63,10 +63,11 @@ public class Search_in_a_2D_Matrix {
 
 
     public static void main(String[] args){
-        ArrayList<ArrayList<Integer>>matrix=new ArrayList<>();
-        matrix.add(new ArrayList<>(Arrays.asList(3,4,7,9)));
-        matrix.add(new ArrayList<>(Arrays.asList(12,13,16,18)));
-        matrix.add(new ArrayList<>(Arrays.asList(20,21,23,29)));
+//        ArrayList<ArrayList<Integer>>matrix=new ArrayList<>();
+//        matrix.add(new ArrayList<>(Arrays.asList(3,4,7,9)));
+//        matrix.add(new ArrayList<>(Arrays.asList(12,13,16,18)));
+//        matrix.add(new ArrayList<>(Arrays.asList(20,21,23,29)));
+        int matrix[][]={{3,4,7,9},{12,13,16,18},{20,21,23,29}};
         int n=3,m=4;
         int target=9;
         System.out.println(search(matrix,n,m,target));;
