@@ -5,9 +5,6 @@ public class maximumNestedDepthOfTheParentheses {
         int count=0;
         int max=0;
         for (int c:s.toCharArray()){
-            if (!(c[0] == '(')){
-                count=0;
-            }
             if(c=='('){
                 count++;
             }
