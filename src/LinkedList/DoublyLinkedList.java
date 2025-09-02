@@ -118,6 +118,72 @@ public class DoublyLinkedList {
 
     }
 
+//    Insertion in doubly LinkedList
+//    Insertion of head
+    public static Nodes InsertionBeforeHead(Nodes head,int val){
+        Nodes newHead=new Nodes(val,head,null);
+        head.back=newHead;
+        head=newHead;
+        return head;
+    }
+    //  Insertion of tail
+
+    public static Nodes InsertionBeforeTail(Nodes head ,int val){
+        Nodes tail=head;
+        while (tail.next!=null){
+            tail=tail.next;
+        }
+        Nodes prev=tail.back;
+        Nodes newHead=new Nodes(val,tail,prev);
+        prev.next=newHead;
+        tail.back=newHead;
+
+        return head;
+    }
+
+    //Insertion before kth element
+
+    public static Nodes InsertionBeforeKthElement(Nodes head,int k ,int val){
+        Nodes temp=head;
+        int cnt=0;
+        while (temp.next!=null){
+            cnt++;
+            if (cnt==k){
+              break;
+            }
+            temp=temp.next;
+        }
+        Nodes prev =temp.back;
+        Nodes newNode=new Nodes(val,temp,prev);
+        prev.next=newNode;
+        temp.back=newNode;
+
+        return head;
+    }
+
+    //InsertionBeforeHead....................
+    public static void InsertionBeforeNode(Nodes node ,int val){
+        Nodes prev=node.back;
+        Nodes newNode=new Nodes(val,node,prev);
+        prev.next=newNode;
+        node.back=newNode;
+    }
+
+    //Insertion At tail.................................
+    public static Nodes insertAtTail(Nodes head,int k){
+        if (head==null){
+            return new Nodes(k);
+        }
+        Nodes tail=head;
+        while (tail.next!=null){
+            tail=tail.next;
+        }
+        Nodes newNode=new Nodes(k,null,tail);
+        tail.next=newNode;
+        return head;
+
+    }
+
 
     public static void main(String[] args) {
         int arr[]={1,5,6,8};
@@ -127,7 +193,15 @@ public class DoublyLinkedList {
 //        head=headOfDLL(head);
 //        head=tailOfDLL(head);
 //        head=kthElementOfDLList(head,k);
-            deleteNode(head.next.next);
+//        deleteNode(head.next.next);
+//        head=InsertionBeforeHead(head,100);
+//        head=InsertionBeforeTail(head,100);
+//        head=InsertionBeforeKthElement(head,3,100);
+
+//        InsertionBeforeNode(head.next.next,100);
+       head= insertAtTail(head,100);
+
+
 //        System.out.println(lengthOfDLL(head));
         Nodes temp=head;
         while(temp!=null){
