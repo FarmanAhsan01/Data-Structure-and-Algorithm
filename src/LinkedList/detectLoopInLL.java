@@ -2,6 +2,7 @@ package LinkedList;
 
 import javax.naming.InsufficientResourcesException;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class detectLoopInLL {
     public static Node ArrayToLinkedList(int arr[]){
@@ -18,17 +19,22 @@ public class detectLoopInLL {
     //Brute Approach....................................
 
 //    public static boolean detectLoop(Node head){
-//        HashMap<Node, Integer> map=new HashMap<>();
-//        Node temp=head;
-//        while (temp!=null){
-//            if (map.containsKey(temp)){
+//        if (head == null){
+//            return false;
+//        }
+//        Node temp = head;
+//        HashMap<Node,Integer> map = new HashMap<>();
+//        while (temp.next != null) {
+//            if (map.containsKey(temp)) {
 //                return true;
 //            }
-//            map.put(temp,1);
-//            temp=temp.next;
+//            map.put(temp, 1);
+//            temp = temp.next;
 //        }
+//
 //        return false;
 //    }
+
 
     //Optimal Approach..................................
 
