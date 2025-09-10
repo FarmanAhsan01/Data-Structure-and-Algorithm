@@ -40,21 +40,27 @@ public class deleteNodeFromLast {
         //   Optimal Approach .........................
 
     public static Node removeNode(Node head, int n){
+        if (head == null) return null;
         Node fast=head;
         for (int i=0;i<n;i++){
             fast=fast.next;
+        }
+        if (fast == null) {
+            return head.next;
         }
         Node slow=head;
         while (fast.next!=null){
             slow=slow.next;
             fast=fast.next;
         }
+
+
         slow.next=slow.next.next;
         return head;
     }
     public static void main(String[] args) {
         int arr[]={1,4,6,7,9,4};
-        int n=2;
+        int n=6;
         Node head=ArrayToLinkedList(arr);
         head=removeNode(head,n);
         Node temp=head;
