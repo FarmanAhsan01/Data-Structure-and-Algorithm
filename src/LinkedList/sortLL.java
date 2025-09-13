@@ -84,7 +84,7 @@ public class sortLL {
 
     }
     public static void main(String[] args) {
-        int arr[]={4,5,7,0,9,1};
+        int arr[]={4,5,7,0,9,10,1};
         Node head=convertArr2LL(arr);
         head=sort(head);
         Node temp=head;
