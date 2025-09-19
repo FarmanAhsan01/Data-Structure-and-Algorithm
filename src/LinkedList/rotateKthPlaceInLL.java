@@ -22,6 +22,9 @@ public class rotateKthPlaceInLL {
     public static Node rotateKTimes(Node head,int k){
             Node temp=head;
             int len=1;
+        if (head == null || head.next == null || k == 0) {
+            return head;
+        }
             while(temp.next!=null){
                 len=len+1;
                 temp=temp.next;
