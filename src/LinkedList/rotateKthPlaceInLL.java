@@ -13,7 +13,7 @@ public class rotateKthPlaceInLL {
     }
     public static Node findNthNode(Node head,int k){
         Node temp=head;
-        while (k!=0){
+        while (k!=1){
             temp=temp.next;
             k--;
         }
@@ -21,7 +21,7 @@ public class rotateKthPlaceInLL {
     }
     public static Node rotateKTimes(Node head,int k){
             Node temp=head;
-            int len=0;
+            int len=1;
             while(temp.next!=null){
                 len=len+1;
                 temp=temp.next;
