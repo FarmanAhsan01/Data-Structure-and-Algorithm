@@ -65,14 +65,14 @@ public class flatteningOfLL {
             if (list1.data< list2.data){
                 res.child=list1;
                 res=list1;
-                list1=list1.next;
+                list1=list1.child;
             }
             else {
                 res.child=list2;
                 res=list2;
                 list2=list2.child;
             }
-            res.next=null;
+            res.child=null;
         }
         if (list1!=null){
             res.child=list1;
