@@ -52,38 +52,82 @@ class queue{
         if (currSize==0){
             start=0;
             end=0;
+            queues[end]=x;
         }
         else {
-            end=end+1%size;
+            end=(end+1)%size;
             queues[end]=x;
-            size+=1;
         }
+        currSize+=1;
     }
     void pop(){
         if (currSize==0){
             return;
         }
         if (currSize==1){
-            start=end-1;
+            start=-1;
+            end=-1;
         }
-
+        else {
+            start=(start+1)%size;
+        }
+        currSize-=1;
+    }
+    int top(){
+        if (currSize==0){
+            return -1;
+        }
+        return queues[start];
+    }
+    int size(){
+        return currSize;
+    }
+    void printQueue() {
+        if (currSize == 0) {
+            System.out.println("Queue is Empty!");
+            return;
+        }
+        System.out.print("Queue Elements: ");
+        int i = start;
+        for (int count = 0; count < currSize; count++) {
+            System.out.print(queues[i] + " ");
+            i = (i + 1) % size;
+        }
+        System.out.println();
     }
 }
 
 public class IntroductionOfStackAndQueues {
-    public static st stack(int arr[]){
-        st s=new st();
+//    public static st stack(int arr[]){
+//        st s=new st();
+//        s.push(5);
+//        s.push(10);
+//        s.push(15);
+//        s.pop();
+//
+//        return s;
+//    }
+    public static queue queues(int arr[]){
+        queue s=new queue();
         s.push(5);
         s.push(10);
         s.push(15);
         s.pop();
-
         return s;
     }
     public static void main(String[] args) {
-        int arr[] = new int[10];
-        st s=stack(arr);
-        s.printStack();
+
+        //stack
+//        int arr[] = new int[10];
+//        st s=stack(arr);
+//        s.printStack();
+//        System.out.println(s.top());
+//        System.out.println(s.size());
+
+        //queue
+        int arr[]=new int[10];
+        queue s=queues(arr);
+        s.printQueue();
         System.out.println(s.top());
         System.out.println(s.size());
     }
