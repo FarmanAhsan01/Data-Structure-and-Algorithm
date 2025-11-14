@@ -29,26 +29,34 @@ class stacks{
 }
 
 class queues{
-    Stack<Integer> s1,s2=new Stack<>();
+    Stack<Integer> s1=new Stack<>();
+    Stack<Integer> s2=new Stack<>();
     void push(int x){
-        while (s1.size()){
-            s2.push(s1.peek());
-            s1.pop();
+        while (!s1.isEmpty()){
+            s2.push(s1.pop());
+
         }
         s1.push(x);
-        while (s2.size()){
-            s1.push(s2.peek());
-            s2.pop();
+        while (!s2.isEmpty()){
+            s1.push(s2.pop());
         }
     }
-    void top(){
-        s1.peek();
+    int top(){
+        return s1.peek();
     }
     void pop(){
         s1.pop();
     }
     void printQueue(){
-
+        if (s1.isEmpty()) {
+            System.out.println("Queue is empty!");
+            return;
+        }
+        System.out.print("Queue elements: ");
+        for (int val : s1) {
+            System.out.print(val + " ");
+        }
+        System.out.println();
     }
 }
 
@@ -83,6 +91,16 @@ public class implementationStackUsingQueue_vice_versa {
 
 //        queue........................
         queues s=que();
+        s.printQueue();               // Prints initial queue
+        System.out.println("Top = " + s.top());
+
+        s.pop();
+        System.out.println("After one pop:");
+        s.printQueue();
+
+        s.push(40);
+        System.out.println("After pushing 40:");
+        s.printQueue();
 
     }
 }
