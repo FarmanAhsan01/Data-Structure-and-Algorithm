@@ -52,6 +52,8 @@ public class printingSubsequenceWhoseSumisK {
 //        return false;
 //    }
 
+    // No of combination
+
 //    public static int printS(int ind,int s, int sum, int arr[], int n){
 //        if (ind==n){
 //            if (s==sum){
@@ -66,6 +68,7 @@ public class printingSubsequenceWhoseSumisK {
 //        return l+r;
 //    }
 
+    //printing all subsequence without any repeatation
     public static List<List<Integer>>combinationSum2(int candidates[],int target){
         List<List<Integer>>ans=new ArrayList<>();
         Arrays.sort(candidates);
