@@ -1,6 +1,7 @@
 package Stack_And_Queues;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -22,52 +23,55 @@ public class sumOfSubArrayMinimum {
 //    }
 
     //optimal approach..............................................
-    public static int sumOfSubArray(int arr[]){
-        int n=arr.length;
+    public static int sumOfSubArray(int arr[]) {
+        int n = arr.length;
         List<Integer> nse = findNSE(arr);
-        List<Integer> pse=findPSE(arr);
-        int total=0;
-        int mod=(int)Integer.MAX_VALUE+7;
-        for (int i=0;i<n;i++){
-            int left=i-pse.get(i);
-            int right=nse.get(i)-i;
-            total=(total+(right*left*arr[i])%mod)%mod;
+        List<Integer> pse = findPSE(arr);
+
+        int mod = 1000000007;
+        long total = 0;
+
+        for (int i = 0; i < n; i++) {
+            int left = i - pse.get(i);
+            int right = nse.get(i) - i;
+            total = (total + (long) arr[i] * left * right) % mod;
         }
-        return total;
+
+        return (int) total;
     }
-    public static List<Integer> findNSE(int arr[]){
-        int n=arr.length;
-        List<Integer>nse=new ArrayList<>();
-        Stack<Integer>st=new Stack<>();
-        for (int i=0;i<n;i++){
-            while (!st.empty() && arr[st.peek()]>=arr[i]){
-                st.pop();
-                if (st.isEmpty()){
-                    nse.add(-1);
-                }
-                else {
-                    nse.add(st.peek());
-                }
-                st.push(i);
+
+    public static List<Integer> findNSE(int arr[]) {
+        int n = arr.length;
+        List<Integer> nse = new ArrayList<>(Collections.nCopies(n, n));
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
+                nse.set(st.pop(), i);
             }
+            st.push(i);
         }
         return nse;
     }
-    public static List<Integer> findPSE(int arr[]){
-        int n=arr.length;
-        List<Integer>psee=new ArrayList<>();
-        Stack<Integer>st=new Stack<>();
-        for (int i=0;i<n;i++){
-            while(st.isEmpty() && arr[st.peek()]>arr[i]){
-                    st.pop();
-                    psee.set(i,st.isEmpty()?-1:st.peek());
+
+    public static List<Integer> findPSE(int arr[]) {
+        int n = arr.length;
+        List<Integer> pse = new ArrayList<>(Collections.nCopies(n, -1));
+        Stack<Integer> st = new Stack<>();
+
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
+                st.pop();
             }
-             st.push(i);
+            pse.set(i, st.isEmpty() ? -1 : st.peek());
+            st.push(i);
         }
-        return psee;
+        return pse;
     }
+
     public static void main(String[] args) {
-        int arr[]={3,1,2,4};
+        int arr[] = {3, 1, 2, 4};
         System.out.println(sumOfSubArray(arr));
     }
 }
+
